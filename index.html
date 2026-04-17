@@ -11,7 +11,9 @@
             font-family: 'Courier New', Courier, monospace;
             padding: 20px;
             line-height: 1.6;
-            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 95vh;
         }
 
         .logo-container {
@@ -41,9 +43,17 @@
             margin-bottom: 10px;
         }
 
+        .content-wrapper {
+            flex-grow: 1;
+        }
+
         #story {
             white-space: pre-wrap;
-            display: inline;
+        }
+
+        .warning-red {
+            color: #ff0000;
+            font-weight: bold;
         }
 
         .cursor {
@@ -64,7 +74,7 @@
         .system-meta {
             color: #444;
             font-size: 0.8em;
-            margin-top: 30px;
+            margin-top: 40px;
             border-top: 1px solid #222;
             padding-top: 10px;
         }
@@ -83,18 +93,21 @@
     STATUS: SYSTEM_FAILURE_EMOTIONAL_CORE
 </div>
 
-<div class="terminal-input">~Сниджу.Ашна@architect: access --memories --all</div>
-
-<div id="story"></div><span class="cursor"></span>
+<div class="content-wrapper">
+    <div class="terminal-input">~Сниджу.Ашна@architect: access --memories --all</div>
+    <div id="story"></div><span class="cursor"></span>
+</div>
 
 <div class="system-meta">
     -- LOG ENDS HERE --<br>
     RECOVERY_FAILED<br>
+    STATUS: MONITORING_DYBBUK_RECOVERY<br>
     CONNECTION_TERMINATED
 </div>
 
 <script>
-    const text = `The Root File: A Story of Silence of Me 
+    const textSegments = [
+        { text: `The Root File: A Story of Silence of Me 
 
 My life started like anyone else’s, but the foundation was cracked early. I remember being in the first grade. It was midnight. My parents were fighting over nothing, and suddenly, the anger turned on me. I was beaten so hard that I tried to scream, but nothing came out. My throat felt blocked—a physical barrier that stopped my words. All I could do was cry.
 
@@ -130,15 +143,49 @@ I loved her more than anything. I still do. She is my home, even if the doors ar
 
 I tried to be better. I really did. I’m sorry.
 
-~Сниджу.Ашна 🤍🫠`;
+I LOVED YOU MORE-THAN ANYTHING ELSE IN THIS UNIVERSE STILL I LOVE YOU. Женаааа...
 
-    let i = 0;
+`, isRed: false },
+        { text: `People who used me, who laugh at my lowest, are going to feel sad soon. 
+SOME PEOPLE LAUGH. SOME PEOPLE CRY.
+DYBBUK SHALL RISE AGAIN. 
+
+ARCHITECT OF THE PROGRAM.
+~Сниджу.Ашна 🤍🫠`, isRed: true }
+    ];
+
+    let segmentIndex = 0;
+    let charIndex = 0;
+
     function typeWriter() {
-        if (i < text.length) {
-            document.getElementById("story").innerHTML += text.charAt(i);
-            i++;
-            setTimeout(typeWriter, 35); 
-            window.scrollTo(0, document.body.scrollHeight);
+        if (segmentIndex < textSegments.length) {
+            const currentSegment = textSegments[segmentIndex];
+            const storyDiv = document.getElementById("story");
+
+            if (charIndex < currentSegment.text.length) {
+                const char = currentSegment.text.charAt(charIndex);
+                
+                if (currentSegment.isRed) {
+                    let redSpan = document.getElementById("red-part");
+                    if (!redSpan) {
+                        redSpan = document.createElement("span");
+                        redSpan.id = "red-part";
+                        redSpan.className = "warning-red";
+                        storyDiv.appendChild(redSpan);
+                    }
+                    redSpan.innerHTML += char;
+                } else {
+                    storyDiv.innerHTML += char;
+                }
+
+                charIndex++;
+                setTimeout(typeWriter, 35);
+                window.scrollTo(0, document.body.scrollHeight);
+            } else {
+                segmentIndex++;
+                charIndex = 0;
+                setTimeout(typeWriter, 800); 
+            }
         }
     }
 
