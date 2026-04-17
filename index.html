@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROOT_LOG: SNIJU</title>
+    <style>
+        body { background: #050505; color: #00e676; font-family: 'Courier New', Courier, monospace; padding: 25px; line-height: 1.5; overflow-x: hidden; }
+        #console { max-width: 900px; margin: auto; white-space: pre-wrap; word-wrap: break-word; }
+        .timestamp { color: #555; font-size: 0.8em; }
+        .cmd { color: #fff; font-weight: bold; }
+        .highlight { color: #ff1744; }
+        .cursor { display: inline-block; width: 8px; height: 18px; background: #00e676; animation: blink 0.8s infinite; vertical-align: middle; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+        .footer { margin-top: 50px; color: #888; border-top: 1px solid #222; padding-top: 10px; font-style: italic; }
+    </style>
+</head>
+<body>
+    <div id="console"></div><span class="cursor"></span>
+
+    <script>
+        const text = `[SYSTEM BOOT: APRIL 2026]
+[DECRYPTING ARCHIVE_DATA...]
+[STATUS: LOG RECOVERED]
+
+> whoami
+USER: SNIJU (THE ARCHITECT)
+ROOT: IDUKKI
+
+---
+
+## THE ROOT FILE: A STORY OF SILENCE
+My life started like everyone else’s, but the foundation was cracked early. 1st Grade. Midnight. My throat felt blocked—a physical barrier that stopped my words. All I could do was cry. That trauma never left me; it became a root file that cannot be deleted. I became a fake to survive. I stayed hidden in the shadows of Idukki.
+
+## THE BLACK SCREEN
+By 8th grade, I was drifting. Society labeled me a "bad kid," so I accepted the name. Then the pandemic hit. I opened a terminal for the first time—a black screen with a blinking cursor. It didn't judge me. It didn't call me weak. I taught myself to code. I built scripts that destroyed data with zero-footprint. I realized I understood the architecture of the digital world.
+
+## ASHNA: THE ONLY HIGH
+I remember that cold breeze at the school door. I saw her: Ashna. I was locked in her eyes. I ran away the first time, but I came back to say my name: SNIJU. We became best friends. I loved her, but I was terrified. When I proposed, I got a beating. The trauma came back. My throat blocked. A "friend" betrayed us with lies. 
+
+But on Oct 20th, she proposed to me. She was the real high. Not tobacco, not the code. Just her. I didn't just love her; I became addicted. She was my home.
+
+## THE SYSTEM CRASH
+Withdrawals. Grandmother passing away. Friends betraying me again. I told myself, "It’s okay, I have her." Then Jan 24, 2026. At the bus stand, she ended it. The stress replaced the dopamine. I lost myself. I finished board exams with 0% effort because I was already gone.
+
+## THE FINAL LOG
+I look in the mirror and I see a loser. A loser son, a loser brother, a loser boyfriend. People think I’m okay because I’m an expert at being fake. I’m high on a pain more dangerous than any drug.
+
+I loved her more than anything. I still do. She is my home, even if the doors are locked. If I disappear, it’s because every small particle of trauma turned into a stone too heavy to carry.
+
+I tried to be better. I really did. I’m sorry.
+
+~Сниджу.Ашна 🤍🫠
+[END OF LOG]`;
+
+        let i = 0;
+        function typeWriter() {
+            if (i < text.length) {
+                document.getElementById("console").innerHTML += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, 25); 
+                window.scrollTo(0, document.body.scrollHeight);
+            }
+        }
+        typeWriter();
+    </script>
+</body>
+</html>
