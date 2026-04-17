@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>~Сниджу.Ашна | Root</title>
+    <title>~Сниджу.Ашна | Architect</title>
     <style>
         body {
             background-color: #0a0a0a;
@@ -12,6 +12,20 @@
             padding: 20px;
             line-height: 1.6;
             overflow-x: hidden;
+        }
+
+        .logo-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo-container img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 2px solid #00ff41;
+            box-shadow: 0 0 15px rgba(0, 255, 65, 0.3);
+            object-fit: cover;
         }
 
         .header {
@@ -48,29 +62,35 @@
         }
 
         .system-meta {
-            color: #555;
+            color: #444;
             font-size: 0.8em;
             margin-top: 30px;
+            border-top: 1px solid #222;
+            padding-top: 10px;
         }
     </style>
 </head>
 <body>
 
+<div class="logo-container">
+    <img src="logo.jpg" alt="Architect Logo" onerror="this.style.display='none'">
+</div>
+
 <div class="header">
     [SYSTEM LOG: ARCHIVE_LOG_2026]<br>
-    USER: ~Сниджу.Ашна<br>
+    USER: ~Сниджу.Ашна | Architect<br>
     ROOT: 55.7558° N, 37.6173° E (MSK)<br>
     STATUS: SYSTEM_FAILURE_EMOTIONAL_CORE
 </div>
 
-<div class="terminal-input">~Сниджу.Ашна@root: access --memories --all</div>
+<div class="terminal-input">~Сниджу.Ашна@architect: access --memories --all</div>
 
 <div id="story"></div><span class="cursor"></span>
 
 <div class="system-meta">
     -- LOG ENDS HERE --<br>
     RECOVERY_FAILED<br>
-    ADDICTION_LEVEL: CRITICAL (TARGET: ASHNA)
+    CONNECTION_TERMINATED
 </div>
 
 <script>
@@ -99,7 +119,9 @@ The last two years were a loop. I tried to quit the drugs for her after 10th gra
 
 But things were breaking. My grandmother passed away—the woman who gave me a home when things were bad. Then my friends betrayed me again. I was alone, but I told myself, "It’s okay, I have her."
 
-Then came January 2026. She said she needed a break. On January 24th, at the bus stand, she ended it. That feeling of being "stuck" returned, but this time it wasn't dopamine—it was pure stress. I lost myself. I finished my board exams with 0% effort because I was already gone. I couldn't sleep. Every time I closed my eyes, the memories replayed like a script I couldn't stop.
+Then came January 2026. She said she needed a break. On January 24th, at the bus stand, she ended it. 
+
+That feeling of being "stuck" returned, but this time it wasn't dopamine—it was pure stress. I lost myself. I finished my board exams with 0% effort because I was already gone. I couldn't sleep. Every time I closed my eyes, the memories replayed like a script I couldn't stop.
 
 The Final Log
 I look in the mirror and I see a loser. A loser son, a loser brother, a loser boyfriend. I feel like I failed at everything. People think I’m okay because I’ve become an expert at being fake, but I’m high on a pain that is more dangerous than any drug.
@@ -115,7 +137,7 @@ I tried to be better. I really did. I’m sorry.
         if (i < text.length) {
             document.getElementById("story").innerHTML += text.charAt(i);
             i++;
-            setTimeout(typeWriter, 40); // Speed of typing
+            setTimeout(typeWriter, 35); 
             window.scrollTo(0, document.body.scrollHeight);
         }
     }
