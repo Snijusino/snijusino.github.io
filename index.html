@@ -6,41 +6,38 @@
     <title>~Сниджу.Ашна | Architect</title>
     <style>
         body {
-            background-color: #0a0a0a;
+            background-color: #050505;
             color: #00ff41;
             font-family: 'Courier New', Courier, monospace;
-            padding: 20px;
+            padding: 40px 20px;
             line-height: 1.6;
             display: flex;
             flex-direction: column;
-            min-height: 95vh;
+            min-height: 98vh;
         }
 
-        .logo-container {
+        /* Debian Swirl Logo */
+        .debian-logo {
             text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .logo-container img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            border: 2px solid #00ff41;
-            box-shadow: 0 0 15px rgba(0, 255, 65, 0.3);
-            object-fit: cover;
+            margin-bottom: 40px;
+            color: #d70a53; 
+            font-size: 80px;
+            font-weight: bold;
         }
 
         .header {
             color: #ff0000;
             font-weight: bold;
-            margin-bottom: 20px;
-            border-bottom: 1px solid #333;
-            padding-bottom: 10px;
+            margin-bottom: 30px;
+            border-left: 3px solid #ff0000;
+            padding-left: 15px;
+            letter-spacing: 2px;
         }
 
         .terminal-input {
             color: #00ff41;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            font-weight: bold;
         }
 
         .content-wrapper {
@@ -54,6 +51,16 @@
         .warning-red {
             color: #ff0000;
             font-weight: bold;
+        }
+
+        .fs-impact {
+            color: #ff0000;
+            font-size: 2.8em;
+            font-weight: 900;
+            text-align: center;
+            margin: 50px 0;
+            letter-spacing: 8px;
+            text-shadow: 0 0 15px rgba(255, 0, 0, 0.6);
         }
 
         .cursor {
@@ -71,39 +78,72 @@
             100% { opacity: 1; }
         }
 
+        /* Professional Log Footer */
         .system-meta {
-            color: #444;
-            font-size: 0.8em;
-            margin-top: 40px;
-            border-top: 1px solid #222;
-            padding-top: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            color: #888;
+            font-size: 0.85em;
+            margin-top: 50px;
+            padding: 20px;
+            border: 1px solid #222;
+            text-transform: uppercase;
+        }
+
+        .status-tag {
+            color: #ff0000;
+            font-weight: bold;
+        }
+
+        .token-btn {
+            background: transparent;
+            color: #00ff41;
+            border: 1px solid #00ff41;
+            padding: 10px 20px;
+            font-family: 'Courier New', monospace;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+
+        .token-btn:hover {
+            background: #00ff41;
+            color: #000;
+            box-shadow: 0 0 15px #00ff41;
         }
     </style>
 </head>
 <body>
 
-<div class="logo-container">
-    <img src="logo.jpg" alt="Architect Logo" onerror="this.style.display='none'">
+<div class="debian-logo">
+    🍥<br>
+    <span style="font-size: 20px; letter-spacing: 5px;">DEBIAN GNU/LINUX</span>
 </div>
 
 <div class="header">
-    [SYSTEM LOG: ARCHIVE_LOG_2026]<br>
-    USER: ~Сниджу.Ашна | Architect<br>
-    ROOT: 55.7558° N, 37.6173° E (MSK)<br>
-    STATUS: SYSTEM_FAILURE_EMOTIONAL_CORE
+    [ACCESS_GRANTED: ENCRYPTED_VULN_SCAN]<br>
+    USER ID: ~Сниджу.Ашна | Architect<br>
+    HOST: DEBIAN-KALI-SUBSYSTEM<br>
+    STATUS: CRITICAL_CORE_FAILURE
 </div>
 
 <div class="content-wrapper">
-    <div class="terminal-input">~Сниджу.Ашна@architect: access --memories --all</div>
+    <div class="terminal-input">architect@debian:~$ cat /root/memories/archive_2026.log</div>
     <div id="story"></div><span class="cursor"></span>
 </div>
 
+<div class="fs-impact">FUCK SOCIETY</div>
+
 <div class="system-meta">
-    -- LOG ENDS HERE --<br>
-    RECOVERY_FAILED<br>
-    STATUS: MONITORING_DYBBUK_RECOVERY<br>
-    CONNECTION_TERMINATED<br><br>
-    [SYSTEM INFO: CREATED BY — OPENLLMS V1.4 (PERSONAL AI ASSISTANT OF Сниджу.Ашна / Architect)]
+    --- START OF FINAL LOG ---<br>
+    LOG ENDS HERE: NO RECOVERY DATA DETECTED<br>
+    CORE_DUMP: COMPLETED<br>
+    ENCRYPTION: AES-256-BIT-ACTIVE<br>
+    STATUS: <span class="status-tag">MONITORING_DYBBUK_RECOVERY</span><br>
+    [SYSTEM INFO: OPENLLMS V1.4 - PERSONAL AI ASSISTANT OF ARCHITECT]<br>
+    --- END OF FINAL LOG ---
+    
+    <br>
+    <button class="token-btn" onclick="askToken()">NEED TO KNOW MORE? CLICK HERE</button>
 </div>
 
 <script>
@@ -152,7 +192,7 @@ SOME PEOPLE LAUGH. SOME PEOPLE CRY.
 DYBBUK SHALL RISE AGAIN. 
 
 ARCHITECT OF THE PROGRAM.
-~Сниджу.Ашна 🤍🫠`, isRed: true }
+~Сниджу.Ашна`, isRed: true }
     ];
 
     let segmentIndex = 0;
@@ -187,6 +227,13 @@ ARCHITECT OF THE PROGRAM.
                 charIndex = 0;
                 setTimeout(typeWriter, 800); 
             }
+        }
+    }
+
+    function askToken() {
+        const token = prompt("ARCHITECT_ID DETECTED. ENTER ACCESS TOKEN:");
+        if (token) {
+            alert("ACCESS DENIED. TOKEN UNRECOGNIZED. YOUR IP HAS BEEN LOGGED.");
         }
     }
 
