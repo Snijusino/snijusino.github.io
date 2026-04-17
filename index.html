@@ -16,12 +16,15 @@
             min-height: 98vh;
         }
 
-        /* Debian Swirl Logo */
-        .debian-logo {
-            text-align: center;
-            margin-bottom: 40px;
+        /* ASCII Logo Styling */
+        .ascii-logo {
             color: #d70a53; 
-            font-size: 80px;
+            font-size: 10px;
+            line-height: 1.2;
+            text-align: center;
+            margin-bottom: 30px;
+            white-space: pre;
+            display: block;
             font-weight: bold;
         }
 
@@ -78,7 +81,6 @@
             100% { opacity: 1; }
         }
 
-        /* Professional Log Footer */
         .system-meta {
             background: rgba(255, 255, 255, 0.05);
             color: #888;
@@ -114,10 +116,22 @@
 </head>
 <body>
 
-<div class="debian-logo">
-    🍥<br>
-    <span style="font-size: 20px; letter-spacing: 5px;">DEBIAN GNU/LINUX</span>
-</div>
+<pre class="ascii-logo">
+       _,met$$$$$gg.
+    ,g$$$$$$$$$$$$$$$P.
+  ,g$$P"     """Y$$.".
+ ,$$P'              `$$$.
+',$$P       ,gggg,     `$$b:
+`d$$'     ,$P"  "8b      $$$
+ $$P      d8'    ,88     $$P
+ $$:      88.   ,d88'    $$P
+ $$;      Y8b.. ,adP'    $$P
+ `88.     `Y8888P"      d8P
+  `88b.            _,ad8P'
+    `Y88b....ad8888P"'
+      `""Y888P""'
+<span style="font-size: 16px; letter-spacing: 3px;">DEBIAN GNU/LINUX</span>
+</pre>
 
 <div class="header">
     [ACCESS_GRANTED: ENCRYPTED_VULN_SCAN]<br>
