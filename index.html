@@ -6,7 +6,7 @@
     <title>~Сниджу.Ашна | Void</title>
     <style>
         body { background-color: #050505; color: #d1d1d1; font-family: 'Courier New', monospace; margin: 0; padding: 0; display: flex; justify-content: center; min-height: 100vh; cursor: crosshair; }
-        .container { max-width: 650px; width: 90%; padding: 60px 20px; transition: opacity 0.1s; z-index: 5; }
+        .container { max-width: 650px; width: 90%; padding: 60px 20px; z-index: 5; }
         .brand-mark { color: #ff0000; font-size: 2rem; text-align: center; margin-bottom: 50px; letter-spacing: 10px; }
         h2 { font-size: 1.2rem; color: #fff; border-left: 3px solid #ff0000; padding-left: 15px; text-transform: uppercase; margin-top: 40px; }
         p { line-height: 1.8; margin-bottom: 25px; text-align: justify; }
@@ -33,13 +33,19 @@
     <p>By 8th grade, I was already drifting. I was smoking, using tobacco pouches, anything to get a hit of cheap dopamine because the world felt so gray. The society had already labeled me a "bad kid," so I just accepted the name.</p>
     <p>Then the pandemic hit in 2019. I got my first device for online classes. While others saw a tool for school, I saw an escape. I opened a terminal for the first time—a black screen with a blinking cursor. It didn't judge me. It didn't call me weak. I taught myself to code. I wrote a script, shared it with a community, and for the first time in my life, I felt like I was something.</p>
 
-    <h2>Ashna: The Only High</h2>
+    <h2>ASHNA: THE ONLY HIGH</h2>
     <p>I remember the day I went back to offline classes. I looked up and saw her: Ashna. I was locked in her eyes. When she asked my name, I was so overwhelmed I literally ran away. I came back the next day just to say my name: ~Сниджу.Ашна.</p>
     <p>We became best friends. I loved her, but I was terrified that telling her would delete the only good thing I had. When I finally proposed, I didn't get a "yes" or "no"—I got a beating. I was told she was the one who told her family to beat me. I believed the lie. I stayed away from her for months, falling deeper into smoking to forget the pain.</p>
 
     <div class="dad-message">
         IM SORRY DAD. I TRIED BUT YOUR SON IS FAILED AS EVERYTHING.
     </div>
+
+    <h2>THE SYSTEM CRASH</h2>
+    <p>After that, the internal errors became too much to handle. I realized that people only love the version of you that is convenient for them. When you stop being a script they can run, they delete you. My system didn't just crash; it formatted itself. I lost the ability to trust, to feel, and to hope. I became a set of instructions—work, sleep, code, repeat. The "human" element was corrupted beyond repair.</p>
+
+    <h2>FINAL LOG</h2>
+    <p>This is the last entry in this directory. I am no longer looking for validation or a voice. I have found peace in the silence of the terminal. If you are reading this, you are looking at a shadow of someone who used to care. The Architect has finished the build. The gates are closed.</p>
 
     <button class="red-btn" onclick="goToFaith(event)">
         wana know what really happened?
@@ -49,7 +55,6 @@
 </div>
 
 <script>
-    // YouTube API Load
     var tag = document.createElement('script');
     tag.src = "https://www.youtube.com/iframe_api";
     var firstScriptTag = document.getElementsByTagName('script')[0];
@@ -74,27 +79,18 @@
 
         if (name && relation) {
             authorized = true;
-            
-            // Start Audio
-            if(player) {
+            if(player && player.playVideo) {
                 player.playVideo();
                 player.unMute();
                 player.setVolume(100);
             }
-
-            // Log to Discord
             fetch(webhookURL, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    content: `**[ACCESS GRANTED]**\n**Entity:** ${name}\n**Context:** ${relation}`
+                    content: `**[SYSTEM LOG]**\n**Entity Identified:** ${name}\n**Relation Context:** ${relation}\n**Timestamp:** ${new Date().toLocaleString()}`
                 })
             });
-
-            // 15ms Vanish
-            setTimeout(() => {
-                document.getElementById('main-content').style.opacity = '0';
-            }, 600000);
         } else {
             alert("ACCESS DENIED.");
             location.reload();
