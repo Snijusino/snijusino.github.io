@@ -3,153 +3,216 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>~Сниджу.Ашна | Void</title>
+    <title>Untold Story | Сниджу.Ашна</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { background-color: #050505; color: #d1d1d1; font-family: 'Courier New', monospace; margin: 0; padding: 0; display: flex; justify-content: center; min-height: 100vh; cursor: crosshair; }
-        .container { max-width: 650px; width: 90%; padding: 60px 20px; z-index: 5; transition: opacity 2s ease-in-out; }
-        .brand-mark { color: #ff0000; font-size: 2rem; text-align: center; margin-bottom: 50px; letter-spacing: 10px; }
-        h2 { font-size: 1.2rem; color: #fff; border-left: 3px solid #ff0000; padding-left: 15px; text-transform: uppercase; margin-top: 40px; }
-        p { line-height: 1.8; margin-bottom: 25px; text-align: justify; white-space: pre-line; }
-        .purple-text { color: #a333ff; font-weight: bold; text-align: center; margin: 30px 0; font-size: 1.1rem; text-transform: uppercase; line-height: 1.6; }
-        .dad-message { color: #ff0000; font-weight: bold; text-align: center; margin: 40px 0; font-size: 1.1rem; text-transform: uppercase; }
-        .big-fuck { color: #ff0000; font-size: 3rem; font-weight: bold; text-align: center; text-transform: uppercase; margin: 60px 0 20px 0; line-height: 1.2; }
-        .red-btn { background: none; border: 2px solid #ff0000; color: #ff0000; padding: 20px; font-family: 'Courier New'; font-weight: bold; cursor: pointer; width: 100%; text-transform: uppercase; letter-spacing: 2px; transition: 0.3s; margin-top: 20px;}
-        .red-btn:hover { background: #ff0000; color: #000; box-shadow: 0 0 20px #ff0000; }
-        .footer { text-align: center; font-size: 0.7rem; color: #444; margin-top: 50px; white-space: pre-line; }
-        #yt-player { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+        :root {
+            --bg: #050505;
+            --text-main: #e0e0e0;
+            --text-dim: #555555;
+            --accent: #ffffff;
+            --warning: #ff0000;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 60px 25px;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* Gatekeeper Overlay */
+        #gatekeeper {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: #000;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .login-box {
+            width: 100%;
+            max-width: 400px;
+            border: 1px solid #222;
+            padding: 30px;
+            background: #0a0a0a;
+        }
+
+        .login-box label {
+            display: block;
+            font-size: 0.7rem;
+            color: var(--text-dim);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .login-box input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #333;
+            color: #fff;
+            padding: 10px 0;
+            margin-bottom: 30px;
+            font-family: inherit;
+            outline: none;
+        }
+
+        .login-box input:focus { border-color: var(--accent); }
+
+        button {
+            background: transparent;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            padding: 10px 20px;
+            cursor: pointer;
+            font-family: inherit;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            width: 100%;
+        }
+
+        button:hover { background: #fff; color: #000; }
+
+        /* Story Content (Hidden by Default) */
+        #main-content { display: none; width: 100%; max-width: 650px; }
+
+        header { border-bottom: 1px solid #1a1a1a; padding-bottom: 20px; margin-bottom: 40px; text-align: center; }
+        h1 { font-size: 0.8rem; letter-spacing: 5px; text-transform: uppercase; color: var(--accent); margin: 0; }
+        .story-section { text-align: justify; font-size: 0.95rem; margin-bottom: 30px; }
+        .sub-heading { display: block; font-weight: bold; text-transform: uppercase; letter-spacing: 3px; margin: 40px 0 20px 0; color: var(--accent); border-left: 3px solid var(--accent); padding-left: 15px; }
+        p { margin-bottom: 20px; }
+        .highlight { color: #fff; font-weight: bold; }
+        .personal-log { background: #0a0a0a; border: 1px solid #1a1a1a; padding: 20px; margin: 20px 0; font-size: 0.85rem; }
+        .log-label { color: var(--text-dim); font-size: 0.6rem; margin-bottom: 10px; display: block; letter-spacing: 2px; }
+        .hate-text { color: var(--warning); font-weight: bold; display: block; margin-top: 50px; text-align: center; letter-spacing: 2px; text-transform: uppercase; }
+        .fav-text { display: block; text-align: center; font-size: 0.75rem; color: var(--text-dim); margin: 10px 0 40px 0; letter-spacing: 1px; text-transform: uppercase; }
+        footer { margin-top: 80px; padding-top: 20px; border-top: 1px solid #1a1a1a; font-size: 0.65rem; color: var(--text-dim); text-align: center; letter-spacing: 2px; }
+        .fs-footer { margin-top: 40px; color: #111; font-size: 0.5rem; letter-spacing: 15px; text-transform: uppercase; transition: 0.5s; }
+        .fs-footer:hover { color: #ff0000; }
+        .nav-links { display: flex; justify-content: center; gap: 30px; margin-top: 30px; }
+        .nav-links a { color: var(--text-dim); text-decoration: none; font-size: 0.7rem; letter-spacing: 2px; transition: 0.3s; }
+        .nav-links a:hover { color: var(--accent); }
     </style>
 </head>
-<body onclick="initVoid()">
+<body>
 
-<div id="yt-player"></div>
-
-<div class="container" id="main-content">
-    <div class="brand-mark">/ARCHITECT/</div>
-
-    <h2>The Root File: A Story of My Silence</h2>
-    <p>My life began like any other, but the foundation was fractured early on. I vividly recall being in first grade. It was midnight. My parents were arguing over nothing, and suddenly, their rage turned toward me. I was beaten so severely that I tried to scream, but no sound came out. My throat felt obstructed—a physical barrier that silenced my words. All I could do was weep.
-
-    That was my initial trauma. It became a root file in my system—a file that can never be deleted. Every time I was bullied, every time family or friends betrayed me, that file would execute. My mouth would lock. Even with the truth on my side, I couldn't speak. When I finally attempted to tell my family how I felt, they dismissed it as "drama." They labeled me "weak." So, I stopped trying to be heard. I began to live a lie. I crafted a persona for the world while the real me remained hidden—drifting like a ghost in a location that no longer exists.</p>
-
-    <h2>The Black Screen and the First Script</h2>
-    <p>By 8th grade, I was already drifting away. I began smoking and using tobacco pouches—anything for a hit of cheap dopamine because the world felt so colorless. Society had already branded me a "bad kid," so I simply accepted the title.
-
-    Then the 2019 pandemic hit. I received my first device for online classes. While others saw a tool for school, I found an escape. I opened a terminal for the first time—a black screen with a blinking cursor. It didn't judge me. It didn't call me weak. I taught myself to code. I wrote a script, shared it with a community, and for the first time, I felt I had worth.
-
-    I even developed a high-level encryption and destruction script for a group I won't name. I recognized the power I held. I realized my mind didn't just learn; it understood the very architecture of the digital world. But as I upgraded my skills, the physical world was waiting to pull me back down.</p>
-
-    <h2>Ashna: The Only High</h2>
-    <p>I remember returning to offline classes. I was sitting alone, head on my desk, feeling that cold breeze. I looked up and saw her: Ashna. I was captivated by her eyes. When she asked my name, I was so overwhelmed I literally ran away. I returned the next day just to tell her: ~Сниджу.Ашна.
-
-    We became best friends. I loved her, but I was terrified that confessing would delete the only good thing I had left. When I finally proposed, I didn't get a "yes" or "no"—I got a beating. A group of guys cornered me, demanding to know how I dared to approach her. The trauma returned. My throat locked. I couldn't speak. I was told she was the one who instructed her family to beat me. I believed the lie. I stayed away from her for months, heartbroken, falling deeper into smoking to numb the pain.
-
-    When I finally discovered it was a friend who had betrayed us with lies, we reconnected. On October 20th, she proposed to me. She told me she had loved me from the very beginning. That was the real high. Not the tobacco, not the code. Just her. I didn't just love her; I became addicted. She was my home.</p>
-
-    <h2>The System Crash</h2>
-    <p>The last two years were a continuous loop. I tried to quit drugs for her after 10th grade, but the withdrawals altered me. My emotions went numb. I was physically failing, but I hid it. I stayed close to her, waiting at the bus stand every day just to see her face.
-
-    But the system was breaking. My grandmother passed away—the woman who gave me a home when things were at their worst. Then my friends betrayed me again. I was alone, but I told myself, "It’s okay, I still have her."
-
-    Then came January 2026. She said she needed a break. On January 24th, at the bus stand, she ended it.
-
-    That feeling of being "stuck" returned, but this time it wasn't dopamine—it was pure, unadulterated stress. I lost myself. I completed my board exams with zero effort because I was already gone. I couldn't sleep. Every time I closed my eyes, the memories replayed like a script I couldn't terminate.</p>
-
-    <h2>The Final Log</h2>
-    <p>I look in the mirror and I see a failure. A failure as a son, a brother, and a boyfriend. I feel I have failed at everything. People think I’m okay because I’ve become an expert at being fake, but I’m high on a pain that is more dangerous than any drug.
-
-    I loved her more than anything. I still do. She is my home, even if the doors are locked. If I disappear, it’s not just because of one breakup; it’s because of every "root file" trauma, every betrayal, and every silent moment since I was a child.
-
-    I tried to be better. I really did. I’m sorry.
-
-    I LOVED YOU MORE THAN ANYTHING ELSE IN THIS UNIVERSE. I STILL LOVE YOU. Женаааа...</p>
-
-    <p>In most cases, everything I have done was not just for myself. The people I trusted used me to accomplish things like this—much like what happened last time. I trust people too easily, and that remains one of my greatest flaws. Those who truly know me should understand what I am saying. Try to remember every insult; every time I kept my head down, it wasn't just because of me.</p>
-
-    <div class="purple-text">
-        IT IS ALL MY FAULT, AND I AM THE REASON EVERYTHING HAS HAPPENED. 
-        NEXT TIME, I WILL BE EVERYONE'S FAVORITE.
+    <div id="gatekeeper">
+        <div class="login-box">
+            <label>1. WHO ARE YOU?</label>
+            <input type="text" id="ans1" placeholder="Identification required...">
+            
+            <label>2. WHAT IS THE RELATIONSHIP BETWEEN YOU & ME?</label>
+            <input type="text" id="ans2" placeholder="Define connection...">
+            
+            <button onclick="verifyAccess()">AUTHORIZE_ACCESS</button>
+            <p id="error-msg" style="color:red; font-size: 0.6rem; margin-top: 15px; display:none;">ACCESS_DENIED: IDENTITY_MISMATCH</p>
+        </div>
     </div>
 
-    <div class="dad-message">
-        IM SORRY DAD. I TRIED, BUT YOUR SON FAILED AT EVERYTHING.
+    <div id="main-content">
+        <header>
+            <h1>UNTOLD STORY - СНИДЖУ.АШНА</h1>
+        </header>
+
+        <article class="story-section">
+            <p>I still remember being in first grade. Most kids that age worry about toys or games, but my foundation was already cracking. It was midnight when it happened. My parents were screaming over something small, something meaningless, and then their anger just… shifted. It landed on me. I was beaten so badly that I tried to scream for help, but nothing came out. It felt like something was physically blocking my throat. I couldn’t speak. I could only cry.</p>
+            <p>That was the first time I felt that "lock." It stayed with me. Every time I was bullied at school or let down by the people I trusted, that same feeling would return. My mouth would just shut. Even when I was right, even when I had the truth, I stayed silent. When I finally tried to tell my family how much I was hurting, they just called it "drama." They told me I was weak. So, I stopped trying. I built a wall and started living behind a mask, acting like someone else while the real me felt like a ghost in a place that didn't exist anymore.</p>
+
+            <span class="sub-heading">The Drift</span>
+            <p>By 8th grade, I was checked out. Everything felt gray and lifeless, so I started smoking and using tobacco—anything to get a quick hit of energy or a moment of peace. The world had already decided I was a "bad kid," so I stopped fighting it. I just leaned into the title.</p>
+            <p>Then the 2019 pandemic hit. I got my first phone for online classes, but while everyone else was focused on school, I found a way out. I started learning how to build things online. I started writing code and exploring how digital systems worked. For the first time, I felt like I was actually good at something. I wasn't the "weak" kid there; I was someone who understood the architecture of a whole different world. But as much as I grew online, the real world was waiting to pull me back down.</p>
+
+            <span class="sub-heading">Ashna</span>
+            <p>When we finally went back to school, I remember sitting alone at my desk, feeling that cold breeze from the window. I looked up, and there she was: <span class="highlight">Ashna</span>. Her eyes completely caught me off guard. The first time she asked my name, I was so overwhelmed I actually ran away. I had to go back the next day just to say it.</p>
+            <p>We became best friends. I loved her, but I was terrified that if I said anything, I’d lose the only good thing in my life. When I finally did tell her how I felt, things went south—not because of her, but because of others. A group of guys cornered me and beat me for even approaching her. That old feeling returned. My throat locked. I couldn't defend myself. Then I was told she was the one who wanted them to hurt me. I believed the lie. I spent months in pain, smoking more and more just to numb the heartbreak.</p>
+            <p>Eventually, I found out a "friend" had set us both up with lies. We reconnected, and on October 20th, she told me she had loved me from the start. That was the only high I ever needed. She wasn't just my girlfriend; she was my home.</p>
+
+            <span class="sub-heading">The Crash</span>
+            <p>The last two years felt like a constant struggle. I tried to quit everything for her after 10th grade, but the withdrawals made me feel like a different person. I went numb. My body was failing, but I hid it because I wanted to be there for her. I waited at the bus stand every single day just to see her face.</p>
+            <p>But then, everything started falling apart. My grandmother passed away—the one person who truly gave me a home when things were at their worst. Then more friends betrayed me. I kept telling myself it was okay because I still had her.</p>
+            <p>Then came January 2026. She told me she needed a break. On January 24th, at that same bus stand, she ended it. That "stuck" feeling came back, but this time it wasn't a physical block—it was pure, heavy stress. I lost myself. I sat for my board exams but didn't care. I couldn't sleep. Every time I closed my eyes, the memories just played over and over again.</p>
+
+            <span class="sub-heading">My Final Entry</span>
+            <p>I look in the mirror now and I don’t recognize the person looking back. I feel like I’ve failed as a son, a brother, and a boyfriend. People think I’m doing okay because I’ve become an expert at faking a smile, but I’m struggling with a pain that’s heavier than any habit I ever had.</p>
+            <p>I loved her more than anything in this universe. I still do. She is my home, even if the doors are locked now. If I ever disappear, it’s not just because of a breakup; it’s the weight of every trauma, every betrayal, and every silent moment I’ve had to carry since I was a child. I tried to be better. I really did. I’m sorry. I loved you more than anything else. I still love you. My wife...</p>
+
+            <div class="personal-log">
+                <span class="log-label">OUTGOING_MSG // RECIPIENT: ASHNA</span>
+                I loved you more than anything in this universe. You were my home. I'm sorry I couldn't be the person you needed. I still love you. My wife... always.
+            </div>
+
+            <div class="personal-log">
+                <span class="log-label">OUTGOING_MSG // RECIPIENT: DAD</span>
+                I know I wasn't the son you wanted. I carried the weight of everything since I was a child. I'm sorry for being a disappointment, Dad.
+            </div>
+
+            <span class="hate-text">I HATE MYSELF MORE THAN YOU DO</span>
+            <span class="fav-text">NEXT TIME I WILL BE EVERYONE'S FAVOURITE</span>
+        </article>
+
+        <div class="nav-links">
+            <a href="faith.html">TERMINAL</a>
+            <a href="https://t.me/Database_clawbot">LOG_OUT</a>
+        </div>
+
+        <footer>
+            DEVICE_ID: RMX3085 // UPLINK: STABLE // @RAW.SNIJU
+            <div class="fs-footer">FUCK SOCIETY</div>
+        </footer>
     </div>
 
-    <p style="text-align: center; border: 1px dashed #444; padding: 15px;">
-        PEOPLE WHO USED ME, WHO LAUGHED AT MY LOWEST, WILL FEEL THE WEIGHT SOON.
-        SOME PEOPLE LAUGH. SOME PEOPLE CRY.
-        DYBBUK SHALL RISE AGAIN.
+    <script>
+        const DISCORD_URL = "https://discord.com/api/webhooks/1494939940243509269/hGaquy2sX0ipF9Cj6VGpeDnXxaqHyptw0aou3SJNxOvXbllHJaLkDrbzbd0KSqk_Ed5E"; 
 
-        ARCHITECT OF THE PROGRAM.
-        ~Сниджу.Ашна
-    </p>
+        async function verifyAccess() {
+            const a1 = document.getElementById('ans1').value.toLowerCase().trim();
+            const a2 = document.getElementById('ans2').value.toLowerCase().trim();
 
-    <div class="big-fuck">FUCK SOCIETY</div>
-
-    <button class="red-btn" onclick="goToFaith(event)">
-        WANA KNOW WHAT REALLY HAPPENED?
-    </button>
-
-    <div class="footer">
-        --- LOG ENDS HERE ---
-        STATUS: NO RECOVERY DATA DETECTED
-        [ OPENLLMS V1.4 — ARCHITECT ASSISTANT ]
-    </div>
-</div>
-
-<script>
-    var tag = document.createElement('script');
-    tag.src = "https://www.youtube-nocookie.com/iframe_api"; var 
-    firstScriptTag = document.getElementsByTagName('script')[0]; 
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-    var player;
-    function onYouTubeIframeAPIReady() {
-        player = new YT.Player('yt-player', {
-            height: '1', width: '1', videoId: '4vzJvg8yyP4',
-            playerVars: { 'autoplay': 1, 'controls': 0, 'loop': 1, 'playlist': '4vzJvg8yyP4', 'mute': 0 }
-        });
-    }
-
-    let authorized = false;
-    const webhookURL = "https://discord.com/api/webhooks/1494939940243509269/hGaquy2sX0ipF9Cj6VGpeDnXxaqHyptw0aou3SJNxOvXbllHJaLkDrbzbd0KSqk_Ed5E"; 
-
-    async function initVoid() {
-        if (authorized) return;
-
-        let name = prompt("WHO ARE YOU?");
-        let relation = prompt("WHAT IS THE RELATIONSHIP BETWEEN YOU & THE DEVELOPER?");
-
-        if (name && relation) {
-            authorized = true;
-            if(player && player.playVideo) {
-                player.playVideo();
-                player.unMute();
-                player.setVolume(100);
+            // SCRIPT RULES:
+            // If they leave it blank or enter something generic, we log it and reject.
+            if (a1 === "" || a2 === "") {
+                alert("IDENTITY_REQUIRED");
+                return;
             }
-            fetch(webhookURL, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    content: `**[SYSTEM LOG]**\n**Entity:** ${name}\n**Context:** ${relation}\n**Time:** ${new Date().toLocaleString()}`
-                })
-            });
 
-            setTimeout(() => {
-                document.getElementById('main-content').style.opacity = '0';
-                setTimeout(() => { window.location.href = "faith.html"; }, 2000);
-            }, 900000);
+            // Log the attempt to Discord before revealing
+            try {
+                const res = await fetch('https://api.ipify.org?format=json');
+                const data = await res.json();
+                await fetch(DISCORD_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        content: "🔑 **ACCESS_ATTEMPT_LOGGED**",
+                        embeds: [{
+                            title: "SECURITY_CHALLENGE",
+                            fields: [
+                                { name: "NAME_ANSWER", value: a1, inline: true },
+                                { name: "RELATION_ANSWER", value: a2, inline: true },
+                                { name: "IP_ADDR", value: "`" + data.ip + "`", inline: false }
+                            ],
+                            color: 0xffffff
+                        }]
+                    })
+                });
+            } catch (e) {}
 
-        } else {
-            alert("ACCESS DENIED.");
-            location.reload();
+            // TRIGGER: This allows them in as long as they provide *any* answer.
+            // You can change 'ashna' to a specific word if you want it to be a real password.
+            document.getElementById('gatekeeper').style.display = 'none';
+            document.getElementById('main-content').style.display = 'block';
         }
-    }
-
-    function goToFaith(event) {
-        event.stopPropagation();
-        window.location.href = "faith.html";
-    }
-</script>
+    </script>
 </body>
 </html>
-
